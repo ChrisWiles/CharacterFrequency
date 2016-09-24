@@ -1,23 +1,28 @@
-var app = require('express')()
-var express = require('express')
-var http = require('http').Server(app)
-var path = require('path')
-var browserify = require('browserify-middleware')
-var path = require('path')
-var assetFolder = path.join(__dirname, '..', 'client','public')
+const app = require('express')()
+const express = require('express')
+const http = require('http').Server(app)
+const path = require('path')
+const bodyParser = require('body-parser');
+const browserify = require('browserify-middleware')
+const assetFolder = path.join(__dirname, '..', 'client','public')
 
 // Serve Static Assets
 app.use(express.static(assetFolder))
+   .use(bodyParser.json())
+
+app.post('/frequency', (req, res) => {
+   console.log(req.body.string)
+});
 
 // Serve JS Assets
 app.get('/app-bundle.js',
  browserify('./client/index.js', {
     transform: [ [ require('babelify'), { presets: ['es2015', 'react'] } ] ]
   })
-) 
+)
 
 // Wild card route for client side routing.
-app.get('/*', function(req, res){
+app.get('/*', (req, res) => {
   res.sendFile( assetFolder + '/index.html' )
 })
 
