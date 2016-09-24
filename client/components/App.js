@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import TextInput from './TextInput'
 
 export default class App extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-
+    // get char Freq from mongo
   }
 
   render() {
@@ -16,7 +17,8 @@ export default class App extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-offset-2 col-md-8">
-            WORK WORK 
+            <h1 className='text-center'>Character Frequency</h1>
+            <TextInput/>
           </div>
         </div>
       </div>

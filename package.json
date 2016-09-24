@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Char Freq",
   "scripts": {
-    "start": "node server/server.js"
+    "start": "nodemon server/server.js"
   },
   "devDependencies": {
     "nodemon": "^1.10.0"
