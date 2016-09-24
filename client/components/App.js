@@ -5,12 +5,14 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      frequency : {}
     }
   }
 
   componentDidMount() {
     // get char Freq from mongo
   }
+
 
   render() {
     return (

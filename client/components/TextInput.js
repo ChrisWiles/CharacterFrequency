@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {frequency} from '../models/API'
 
 export default class TextInput extends Component {
    constructor(props) {
@@ -11,15 +12,18 @@ export default class TextInput extends Component {
    _handleSubmit(event) {
       event.preventDefault();
       console.log(this.state.term)
+
+      // Sync with Mongo DB
+      frequency(this.state.term).then(obj => {
+        console.log(obj.data)
+      })
       this.setState({term: ''})
-      // send to DB
    }
 
    _onInputChange(value) {
-     console.log(value)
       this.setState({
          term: value.substr(0, 140)
-      });
+      })
    }
 
    render() {
