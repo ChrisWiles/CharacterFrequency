@@ -3,23 +3,30 @@ const FrequencyModel = require("./Frequency_Schema")
 const mongoose = require('mongoose')
 
 exports.frequency = (characters) => {
-  // update DB
-  // return updated DB
-  console.log(characters)
-
-  return FrequencyModel.find({})
-    .then(data => {
-      return merge(data, characters)
-    })
+  return FrequencyModel.findOne({}).then(data => writeDB(data, characters))
 }
 
-function merge(data, characters) {
-  const Frequency = new FrequencyModel()
-  Frequency.characters = characters
-
-  Frequency.save(function(err, fluffy) {
+function writeDB(data, characters) {
+  data.characters = merge(data.characters , characters)
+  data.save(function(err, fluffy) {
      if (err) return console.log(err)
   })
 
-  return Frequency
+  return data
+}
+
+function merge(a, b) {
+   const merged = {}
+   let keys = [...Object.keys(a), ...Object.keys(b)]
+
+   keys.forEach(key => {
+      if (a[key] && b[key]) {
+         merged[key] = a[key] + b[key]
+      } else if (a[key]) {
+         merged[key] = a[key]
+      } else if (b[key]) {
+         merged[key] = b[key]
+      }
+   })
+   return merged
 }
