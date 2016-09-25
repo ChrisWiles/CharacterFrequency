@@ -11,12 +11,10 @@ export default class TextInput extends Component {
 
    _handleSubmit(event) {
       event.preventDefault();
-      console.log(this.state.term)
 
       // Sync with Mongo DB
-      frequency(this.state.term).then(obj => {
-        console.log(obj.data)
-      })
+      frequency(this.state.term)
+        .then(obj => this.props.setFrequency(obj.data))
       this.setState({term: ''})
    }
 
