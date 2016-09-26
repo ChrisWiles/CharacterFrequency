@@ -6,9 +6,8 @@ export default class BarChart extends Component {
   componentDidMount() {
     // get svg from DOM and adjust viewBox
     const shape = document.getElementsByTagName("svg")
-    shape[0].setAttribute("viewBox", "55 0 900 900")
+    shape[0].setAttribute("viewBox", "0 0 1000 1000")
   }
-
 
   render() {
     return (
