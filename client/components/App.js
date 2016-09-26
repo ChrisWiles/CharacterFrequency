@@ -18,7 +18,8 @@ export default class App extends Component {
   componentDidMount() {
      // Sync with Mongo DB on load
      frequency().then(obj => this._charFrequency(obj.data))
-     // Live Update
+     
+     // Sync with Mongo DB every 30secs
      const self = this
      setInterval(function() {
         frequency().then(obj => self._charFrequency(obj.data))
@@ -71,7 +72,12 @@ export default class App extends Component {
           <div className="col-md-offset-2 col-md-8">
             <h1 className='text-center'>Character Frequency</h1>
             <TextInput setFrequency={this._charFrequency.bind(this)}/>
-            <button type="button" className="btn btn-success btnChart" onClick={this._handleClick.bind(this)}>{this.state.isBarChart ? "Pie Chart" : "Bar Chart"}</button>
+            <button
+              type="button"
+              className="btn btn-success btnChart"
+              onClick={this._handleClick.bind(this)}>
+              {this.state.isBarChart ? "Pie Chart" : "Bar Chart"}
+            </button>
           </div>
           {this.state.charFrequency ? this._renderChart() : <h1>No Data</h1>}
         </div>
