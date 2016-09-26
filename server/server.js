@@ -4,7 +4,7 @@ const http = require('http').Server(app)
 const path = require('path')
 const bodyParser = require('body-parser');
 const browserify = require('browserify-middleware')
-const assetFolder = path.join(__dirname, '..', 'client','public')
+const assetFolder = path.join(__dirname, '..', 'client', 'public')
 const Model = require('./frequencyModel')
 
 // Serve Static Assets
@@ -29,7 +29,7 @@ app.get('/app-bundle.js',
 
 // Wild card route for client side routing.
 app.get('/*', (req, res) => {
-  res.sendFile( assetFolder + '/index.html' )
+   res.sendFile(assetFolder + '/index.html')
 })
 
 // Start server

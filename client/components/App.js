@@ -57,7 +57,9 @@ export default class App extends Component {
         e['x'] = i
         e['fill'] = this.state.colors[i]
      })
-     this.setState({charFrequency: mapped})
+     this.setState({
+        charFrequency: mapped
+     })
   }
 
   _handleClick() {

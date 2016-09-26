@@ -13,18 +13,17 @@ export default class TextInput extends Component {
    _handleSubmit(event) {
       event.preventDefault()
       // dont sync while holding enter key
-      if(this.state.term) {
-        // Sync with Mongo DB
-        frequency(this.state.term)
-          .then(obj => this.props.setFrequency(obj.data))
-        this.setState({term: ''})
+      if (this.state.term) {
+         // Sync with Mongo DB
+         frequency(this.state.term)
+            .then(obj => this.props.setFrequency(obj.data))
+
+         this.setState({term: ''})
       }
    }
 
    _onInputChange(value) {
-      this.setState({
-         term: value.substr(0, 40)
-      })
+      this.setState({term: value.substr(0, 40)})
       this.props.getTitleText(value.substr(0, 40))
    }
 
