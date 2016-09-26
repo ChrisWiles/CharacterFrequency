@@ -11,11 +11,13 @@ export default class TextInput extends Component {
 
    _handleSubmit(event) {
       event.preventDefault();
-
-      // Sync with Mongo DB
-      frequency(this.state.term)
-        .then(obj => this.props.setFrequency(obj.data))
-      this.setState({term: ''})
+      // dont sync while holding enter key
+      if(this.state.term) {
+        // Sync with Mongo DB
+        frequency(this.state.term)
+          .then(obj => this.props.setFrequency(obj.data))
+        this.setState({term: ''})
+      }
    }
 
    _onInputChange(value) {
@@ -26,8 +28,13 @@ export default class TextInput extends Component {
 
    render() {
       return (
-         <form className="comment-form" onSubmit={this._handleSubmit.bind(this)}>
-            <input className="form-control" value={this.state.term} placeholder="140 Character Limit" onChange={event => this._onInputChange(event.target.value)}/>
+         <form className="TextInput comment-form" onSubmit={this._handleSubmit.bind(this)}>
+            <input
+              className="form-control"
+              value={this.state.term}
+              placeholder="140 Character Limit"
+              onChange={event => this._onInputChange(event.target.value)}
+            />
          </form>
       )
    }
