@@ -16,7 +16,6 @@ let count = 0
 app.post('/frequency', (req, res) => {
    console.log(`/frequency ${++count}`)
    Model.frequency(req.body.string).then(data => {
-     console.log(data.characters)
      res.send(data.characters)
    })
 })
