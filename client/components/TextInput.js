@@ -22,8 +22,9 @@ export default class TextInput extends Component {
 
    _onInputChange(value) {
       this.setState({
-         term: value.substr(0, 140)
+         term: value.substr(0, 40)
       })
+      this.props.getTitleText(value.substr(0, 40))
    }
 
    render() {
@@ -32,7 +33,7 @@ export default class TextInput extends Component {
             <input
               className="form-control"
               value={this.state.term}
-              placeholder="140 Character Limit"
+              placeholder="40 Character Limit"
               onChange={event => this._onInputChange(event.target.value)}
             />
          </form>

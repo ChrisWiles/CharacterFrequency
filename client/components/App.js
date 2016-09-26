@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import TextInput from './TextInput'
 import BarChart from './BarChart'
 import PieChart from './PieChart'
+import TitleTextColor from './TitleTextColor'
 import {frequency} from '../models/API'
 import {generateColorPalette} from '../models/helpers'
 
@@ -11,14 +12,15 @@ export default class App extends Component {
     this.state = {
       charFrequency : null,
       isBarChart: true,
-      colors: null
+      colors: null,
+      titleText: null
     }
   }
 
   componentDidMount() {
      // Sync with Mongo DB on load
      frequency().then(obj => this._charFrequency(obj.data))
-     
+
      // Sync with Mongo DB every 30secs
      const self = this
      setInterval(function() {
@@ -65,13 +67,28 @@ export default class App extends Component {
     }
   }
 
+  _getTitleText(titleText) {
+    this.setState({titleText})
+  }
+
+  _displayTitleText(titleText) {
+    if(titleText) {
+      return <TitleTextColor {...this.state}/>
+    } else {
+      return <h1 className='text-center'>Character Frequency</h1>
+    }
+  }
+
   render() {
     return (
       <div className="container">
         <div className="row">
           <div className="col-md-offset-2 col-md-8">
-            <h1 className='text-center'>Character Frequency</h1>
-            <TextInput setFrequency={this._charFrequency.bind(this)}/>
+            {this._displayTitleText(this.state.titleText)}
+            <TextInput
+              setFrequency={this._charFrequency.bind(this)}
+              getTitleText={this._getTitleText.bind(this)}
+            />
             <button
               type="button"
               className="btn btn-success btnChart"
