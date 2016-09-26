@@ -1,3 +1,6 @@
+
+// returns an object with each unique char stored as a key
+// and value is number of times it occurs
 export const characterFrequency = (string) => {
    if (string) {
       return string.toLowerCase().split('').reduce((frequency, letter) => {

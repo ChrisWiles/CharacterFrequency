@@ -40,3 +40,4 @@ $ npm run
 ### Todos
  - Write Tests
  - Add Code Comments
+ - Add option to show recent text without aggregate

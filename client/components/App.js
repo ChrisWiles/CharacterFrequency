@@ -15,6 +15,10 @@ export default class App extends Component {
       colors: null,
       titleText: null
     }
+    // bind event handlers in the constructor so they are only bound once for every instance
+    this._charFrequency = this._charFrequency.bind(this)
+    this._getTitleText = this._getTitleText.bind(this)
+    this._handleClick = this._handleClick.bind(this)
   }
 
   componentDidMount() {
@@ -31,6 +35,7 @@ export default class App extends Component {
   }
 
   _charFrequency(chars) {
+     // return array of mapped objects
      let mapped = []
      for (let key in chars) {
         mapped.push({
@@ -47,7 +52,7 @@ export default class App extends Component {
         return a.y - b.y
      })
 
-     // once sorted the x value can be attached which Victory only sorts by
+     // once sorted the x value can be attached; Victory sorts by x
      mapped.forEach((e, i) => {
         e['x'] = i
         e['fill'] = this.state.colors[i]
@@ -80,23 +85,24 @@ export default class App extends Component {
   }
 
   render() {
+    const {titleText, isBarChart, charFrequency} = this.state
     return (
       <div className="container">
         <div className="row">
           <div className="col-md-offset-2 col-md-8">
-            {this._displayTitleText(this.state.titleText)}
+            {this._displayTitleText(titleText)}
             <TextInput
-              setFrequency={this._charFrequency.bind(this)}
-              getTitleText={this._getTitleText.bind(this)}
+              setFrequency={this._charFrequency}
+              getTitleText={this._getTitleText}
             />
             <button
               type="button"
               className="btn btn-success btnChart"
-              onClick={this._handleClick.bind(this)}>
-              {this.state.isBarChart ? "Pie Chart" : "Bar Chart"}
+              onClick={this._handleClick}>
+              {isBarChart ? "Pie Chart" : "Bar Chart"}
             </button>
           </div>
-          {this.state.charFrequency ? this._renderChart() : <h1>No Data</h1>}
+          {charFrequency ? this._renderChart() : <h3>Loading...</h3>}
         </div>
       </div>
     )

@@ -7,10 +7,11 @@ export default class TextInput extends Component {
       this.state = {
          term: ''
       }
+      this._handleSubmit = this._handleSubmit.bind(this)
    }
 
    _handleSubmit(event) {
-      event.preventDefault();
+      event.preventDefault()
       // dont sync while holding enter key
       if(this.state.term) {
         // Sync with Mongo DB
@@ -29,7 +30,7 @@ export default class TextInput extends Component {
 
    render() {
       return (
-         <form className="TextInput comment-form" onSubmit={this._handleSubmit.bind(this)}>
+         <form className="TextInput comment-form" onSubmit={this._handleSubmit}>
             <input
               className="form-control"
               value={this.state.term}
