@@ -80,7 +80,7 @@ export default class App extends Component {
     if(titleText) {
       return <TitleTextColor {...this.state}/>
     } else {
-      return <h1 className='text-center'>Character Frequency</h1>
+      return <h1 className='text-center title'>Character Frequency</h1>
     }
   }
 

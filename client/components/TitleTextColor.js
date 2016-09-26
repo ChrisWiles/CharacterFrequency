@@ -14,7 +14,7 @@ export default class TitleTextColor extends Component {
 
   render() {
     return (
-      <h1 className='text-center'>{this._mapped()}</h1>
+      <h1 className='title text-center'>{this._mapped()}</h1>
     )
   }
 }
