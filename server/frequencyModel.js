@@ -3,16 +3,25 @@ const FrequencyModel = require("./Frequency_Schema")
 const mongoose = require('mongoose')
 
 exports.frequency = (characters) => {
-  return FrequencyModel.findOne({}).then(data => writeDB(data, characters))
+   return FrequencyModel.findOne({})
+      .then(data => writeDB(data, characters))
+      .catch(err => console.log(err))
 }
 
 function writeDB(data, characters) {
-  data.characters = merge(data.characters , characters)
-  data.save(function(err, fluffy) {
-     if (err) return console.log(err)
-  })
+   if (data) {
+      data.characters = merge(data.characters, characters)
+   } else {
+      // DB is empty, must have been reset on mLab
+      data = new FrequencyModel()
+      data.characters = characters
+   }
 
-  return data
+   data.save(function(err, fluffy) {
+      if (err) return console.log(err)
+   })
+
+   return data
 }
 
 function merge(a, b) {
