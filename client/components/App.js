@@ -71,7 +71,7 @@ export default class App extends Component {
           <div className="col-md-offset-2 col-md-8">
             <h1 className='text-center'>Character Frequency</h1>
             <TextInput setFrequency={this._charFrequency.bind(this)}/>
-            <button type="button" className="btn btn-success btnChart" onClick={this._handleClick.bind(this)}>Pie Chart</button>
+            <button type="button" className="btn btn-success btnChart" onClick={this._handleClick.bind(this)}>{this.state.isBarChart ? "Pie Chart" : "Bar Chart"}</button>
           </div>
           {this.state.charFrequency ? this._renderChart() : <h1>No Data</h1>}
         </div>
