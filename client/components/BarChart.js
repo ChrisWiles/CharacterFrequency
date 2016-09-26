@@ -1,6 +1,13 @@
 import React, {Component} from 'react'
 import {VictoryBar} from 'victory'
 
+const style = {
+   labels: {
+      fontSize: 14,
+      fill: 'white'
+   }
+}
+
 export default class BarChart extends Component {
 
   componentDidMount() {
@@ -17,7 +24,7 @@ export default class BarChart extends Component {
         height={900}
         width={900}
         padding={5}
-        style={{labels: {fontSize: 14, fill: 'white'}}}
+        style={style}
         data={this.props.charFrequency}
       />
     )

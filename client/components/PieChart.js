@@ -1,14 +1,31 @@
 import React, {Component} from 'react'
 import {colorList} from '../models/helpers'
-import {VictoryPie} from 'victory'
+import {VictoryPie, VictoryTooltip, VictoryVoronoiTooltip} from 'victory'
+
+const tooltipProps = {
+   x: 0,
+   y: 0,
+   cornerRadius: 5,
+   orientation: "top"
+}
+
+const style = {
+   labels: {
+      fontSize: 25,
+      fill: 'black'
+   }
+}
 
 export default class PieChart extends Component {
   render() {
     return (
       <VictoryPie
-        innerRadius={140}
+        height={850}
+        width={850}
+        labelComponent={<VictoryTooltip {...tooltipProps}/>}
+        innerRadius={250}
         colorScale={colorList}
-        style={{labels: {fontSize: 6, fill: 'white'}}}
+        style={style}
         data={this.props.charFrequency}
       />
     )
