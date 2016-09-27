@@ -45,7 +45,7 @@ export default class App extends Component {
      }
 
      // sort by charCode
-     mapped = mapped.sort((a, b) => a - b)
+     mapped = mapped.sort((a, b) => a.label.charCodeAt(0) - b.label.charCodeAt(0))
      // set color by charCode, adding a char not in the db previously changes order
      mapped.forEach((e, i) => e['fill'] = this.state.colors[i])
      // sort by value and if values are equal sort by Character
