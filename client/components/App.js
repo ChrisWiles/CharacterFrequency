@@ -64,11 +64,13 @@ export default class App extends Component {
     this.setState({isBarChart: !this.state.isBarChart})
   }
 
-  _renderChart() {
-    if(this.state.isBarChart) {
+  _renderChart(charFrequency, isBarChart) {
+    if (charFrequency && isBarChart) {
       return <BarChart {...this.state}/>
-    } else {
+    } else if (charFrequency) {
       return <PieChart {...this.state}/>
+    } else {
+      return <h3 className="col-md-offset-2 col-md-8 text-center">Loading...</h3>
     }
   }
 
@@ -80,7 +82,7 @@ export default class App extends Component {
     if(titleText) {
       return <TitleTextColor {...this.state}/>
     } else {
-      return <h1 className='text-center App-title'>Character Frequency</h1>
+      return <h1 className="text-center App-title">Character Frequency</h1>
     }
   }
 
@@ -103,8 +105,7 @@ export default class App extends Component {
             </button>
             <h4 className='text-center App-Subtext'>Cumulative results from all users</h4>
           </div>
-
-          {charFrequency ? this._renderChart() : <h3 className="col-md-offset-2 col-md-8 text-center">Loading...</h3>}
+          {this._renderChart(charFrequency, isBarChart)}
         </div>
       </div>
     )
