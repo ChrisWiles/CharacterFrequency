@@ -44,6 +44,10 @@ export default class App extends Component {
         })
      }
 
+     // sort by charCode
+     mapped = mapped.sort((a, b) => a - b)
+     // set color by charCode, adding a char not in the db previously changes order
+     mapped.forEach((e, i) => e['fill'] = this.state.colors[i])
      // sort by value and if values are equal sort by Character
      mapped = mapped.sort((a, b) => {
         if (a.y === b.y) {
@@ -51,15 +55,9 @@ export default class App extends Component {
         }
         return a.y - b.y
      })
-
-     // once sorted the x value can be attached; Victory sorts by x
-     mapped.forEach((e, i) => {
-        e['x'] = i
-        e['fill'] = this.state.colors[i]
-     })
-     this.setState({
-        charFrequency: mapped
-     })
+     // Victory sorts by x; x is set here so that chars are sorted by value
+     mapped.forEach((e, i) => e['x'] = i)
+     this.setState({charFrequency: mapped})
   }
 
   _handleClick() {
