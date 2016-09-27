@@ -36,5 +36,4 @@ function shuffle(array) {
    return array
 }
 
-// dont shuffle color list
-export const generateColorPalette = () => colorList
+export const generateColorPalette = () => shuffle(colorList)
