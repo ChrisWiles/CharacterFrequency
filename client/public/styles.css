@@ -1,11 +1,16 @@
-.TextInput {
-  margin-bottom: 0px;
+.TextInput-form {
+    margin-bottom: 0px;
 }
-.btnChart {
-  margin-bottom: 20px !important;
-  width: 100%;
-  padding: 0 !important;
+
+.App-btnChart {
+    width: 100%;
+    padding: 0 !important;
 }
-.title {
-  font-weight: 800;
+
+.App-Subtext {
+    margin-bottom: 20px !important;
+}
+
+.App-title {
+    font-weight: 800;
 }

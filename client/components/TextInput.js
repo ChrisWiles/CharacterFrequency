@@ -29,7 +29,7 @@ export default class TextInput extends Component {
 
    render() {
       return (
-         <form className="TextInput comment-form" onSubmit={this._handleSubmit}>
+         <form className="TextInput-form comment-form" onSubmit={this._handleSubmit}>
             <input
               className="form-control"
               value={this.state.term}
