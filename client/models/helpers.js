@@ -3,8 +3,10 @@
 export const characterFrequency = (string) => {
    if (string) {
 
-     // "$" can't be a object key in Mongo, going to just remove char for now
-     string = string.toLowerCase().split('').filter(char => char !== '$')
+     // MongoDb
+     // You can use any (UTF8) character in the field name which aren't special (contains ".", or starts with "$").
+     // remove both for now
+     string = string.toLowerCase().split('').filter(char =>  char !== '$' && char !== '.')
 
       return string.reduce((frequency, letter) => {
          frequency[letter] = frequency[letter] + 1 || 1
