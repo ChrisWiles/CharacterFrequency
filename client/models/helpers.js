@@ -2,7 +2,11 @@
 // and value is number of times it occurs
 export const characterFrequency = (string) => {
    if (string) {
-      return string.toLowerCase().split('').reduce((frequency, letter) => {
+
+     // "$" can't be a object key in Mongo, going to just remove char for now
+     string = string.toLowerCase().split('').filter(char => char !== '$')
+
+      return string.reduce((frequency, letter) => {
          frequency[letter] = frequency[letter] + 1 || 1
          return frequency
       }, {})
