@@ -4,18 +4,19 @@ import {frequency} from '../models/API'
 export default class TextInput extends Component {
    constructor(props) {
       super(props)
+      this._handleSubmit = this._handleSubmit.bind(this)
       this.state = {
          term: ''
       }
-      this._handleSubmit = this._handleSubmit.bind(this)
    }
 
    _handleSubmit(event) {
+      const term = this.state.term
       event.preventDefault()
-      // dont sync while holding enter key
-      if (this.state.term) {
+         // dont sync while holding enter key
+      if (term) {
          // Sync with Mongo DB
-         frequency(this.state.term)
+         frequency(term)
             .then(obj => this.props.setFrequency(obj.data))
 
          this.setState({term: ''})

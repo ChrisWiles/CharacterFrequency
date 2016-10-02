@@ -8,17 +8,19 @@ import {generateColorPalette} from '../models/helpers'
 
 export default class App extends Component {
   constructor(props) {
-    super(props)
+    super(props
+      
+    // bind event handlers in the constructor so they are only bound once for every instance
+    this._charFrequency = this._charFrequency.bind(this)
+    this._getTitleText = this._getTitleText.bind(this)
+    this._handleClick = this._handleClick.bind(this)
+
     this.state = {
       charFrequency : null,
       isBarChart: true,
       colors: null,
       titleText: null
     }
-    // bind event handlers in the constructor so they are only bound once for every instance
-    this._charFrequency = this._charFrequency.bind(this)
-    this._getTitleText = this._getTitleText.bind(this)
-    this._handleClick = this._handleClick.bind(this)
   }
 
   componentDidMount() {
