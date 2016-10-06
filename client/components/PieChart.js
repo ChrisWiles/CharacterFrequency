@@ -33,7 +33,7 @@ class PieChart extends Component {
 }
 
 PieChart.propTypes = {
-  charFrequency: PropTypes.object.isRequired
+  charFrequency: PropTypes.array.isRequired
 }
 
 export default PieChart
