@@ -13,7 +13,7 @@ const style = {
   componentDidMount() {
     // get svg from DOM and adjust viewBox
     const shape = document.getElementsByTagName("svg")
-    shape[0].setAttribute("viewBox", "0 0 900 1500")
+    shape[0].setAttribute("viewBox", "0 0 950 1500")
   }
 
   render() {
@@ -23,7 +23,7 @@ const style = {
         horizontal={true}
         height={1500}
         width={900}
-        padding={5}
+        padding={6}
         style={style}
         data={this.props.charFrequency}
       />
