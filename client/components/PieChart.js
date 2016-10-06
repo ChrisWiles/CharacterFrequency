@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import {colorList} from '../utils/helpers'
 import {VictoryPie, VictoryTooltip, VictoryVoronoiTooltip} from 'victory'
 
@@ -16,7 +16,7 @@ const style = {
    }
 }
 
-export default class PieChart extends Component {
+class PieChart extends Component {
   render() {
     return (
       <VictoryPie
@@ -31,3 +31,9 @@ export default class PieChart extends Component {
     )
   }
 }
+
+PieChart.propTypes = {
+  charFrequency: PropTypes.object.isRequired
+}
+
+export default PieChart

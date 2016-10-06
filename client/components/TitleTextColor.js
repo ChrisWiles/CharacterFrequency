@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 
-export default class TitleTextColor extends Component {
+class TitleTextColor extends Component {
 
   _color(charFrequency, char) {
     // set each char to match the color of the char in charFrequency
@@ -9,7 +9,7 @@ export default class TitleTextColor extends Component {
     return color.length ? color[0].fill : 'white'
   }
 
-   _mapped({charFrequency, titleText, colors}) { // Mmm Destructuring
+   _mapped({charFrequency, titleText}) { // Mmm Destructuring
       return titleText.split('').map((char, i) => {
          const color = this._color(charFrequency, char)
          return (
@@ -28,3 +28,10 @@ export default class TitleTextColor extends Component {
       )
    }
 }
+
+TitleTextColor.propTypes = {
+  charFrequency: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  titleText: PropTypes.func.isRequired
+}
+
+export default TitleTextColor

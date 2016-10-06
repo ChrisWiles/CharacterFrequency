@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import {frequency} from '../api/API'
 
-export default class TextInput extends Component {
+class TextInput extends Component {
    constructor(props) {
       super(props)
       this._handleSubmit = this._handleSubmit.bind(this)
@@ -41,3 +41,10 @@ export default class TextInput extends Component {
       )
    }
 }
+
+TextInput.propTypes = {
+  setFrequency: PropTypes.func.isRequired,
+  getTitleText: PropTypes.func.isRequired
+}
+
+export default TextInput

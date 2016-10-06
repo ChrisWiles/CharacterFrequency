@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import {VictoryBar} from 'victory'
 
 const style = {
@@ -8,7 +8,7 @@ const style = {
    }
 }
 
-export default class BarChart extends Component {
+ class BarChart extends Component {
 
   componentDidMount() {
     // get svg from DOM and adjust viewBox
@@ -30,3 +30,9 @@ export default class BarChart extends Component {
     )
   }
 }
+
+BarChart.propTypes = {
+  charFrequency: PropTypes.object.isRequired
+}
+
+export default BarChart
