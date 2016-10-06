@@ -41,3 +41,4 @@ $ npm run
  - Write Tests
  - Add Code Comments
  - Add option to show recent text without aggregate
+ - Add propTypes
