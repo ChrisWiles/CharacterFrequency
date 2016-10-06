@@ -42,3 +42,4 @@ $ npm run
  - Add Code Comments
  - Add option to show recent text without aggregate
  - Add propTypes
+ - Pie Chart should match the other colors

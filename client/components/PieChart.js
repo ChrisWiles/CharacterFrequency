@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {colorList} from '../models/helpers'
+import {colorList} from '../utils/helpers'
 import {VictoryPie, VictoryTooltip, VictoryVoronoiTooltip} from 'victory'
 
 const tooltipProps = {

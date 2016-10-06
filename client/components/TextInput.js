@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {frequency} from '../models/API'
+import {frequency} from '../api/API'
 
 export default class TextInput extends Component {
    constructor(props) {

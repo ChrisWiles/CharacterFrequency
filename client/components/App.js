@@ -3,8 +3,8 @@ import TextInput from './TextInput'
 import BarChart from './BarChart'
 import PieChart from './PieChart'
 import TitleTextColor from './TitleTextColor'
-import {frequency} from '../models/API'
-import {generateColorPalette} from '../models/helpers'
+import {frequency} from '../api/API'
+import {generateColorPalette} from '../utils/helpers'
 
 export default class App extends Component {
   constructor(props) {
