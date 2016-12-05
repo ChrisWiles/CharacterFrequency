@@ -37,11 +37,4 @@ $ npm install
 $ npm run
 ```
 
-### Todos
- - Write Tests
- - Add Code Comments
- - Add option to show recent text without aggregate
- - Add propTypes
- - Pie Chart should match the other colors
- 
- ![Char freq gif](http://i.imgur.com/KfDqw3v.gif)
+![Char freq gif](http://i.imgur.com/KfDqw3v.gif)
