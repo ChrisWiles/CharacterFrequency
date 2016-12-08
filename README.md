@@ -3,6 +3,7 @@ Character Frequency is a cloud-enabled, offline-storage, ReactJS powered data vi
 
 See Live [Character Frequency](https://character-frequency.herokuapp.com/)
 
+
 ### User Stories
 - User can enter a string
 - User sees a unique color for each string char - caseInsensitive
